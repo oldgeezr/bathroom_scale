@@ -10,9 +10,9 @@
 void external_clock_init()
 {
 	// Enable clock prescale
-	CLKPR = ( 1 << CLKPCE );
+	CLKPR = 0x00 | ( 1 << CLKPCE ); // Very sensitive to writing
 	// Prescale 4
-	CLKPR = ( 1 << CLKPS1 );
+	CLKPR = ( 1 << CLKPS1 ); // Very sensitive to writing
 }
 
 void interrupt_init()
@@ -27,15 +27,15 @@ void interrupt_init()
 
 void timer_init()
 {
-	TCNT1 = 0;
+	TCNT1 = 0x0000;
 	// Set CTC mode
-	TCCR1A |= (1 << WGM12);
+	TCCR1B = (1 << WGM12);
 	// Set clock prescale to 1024
-	TCCR1B |= (1 << CS12) | (1 << CS10);
-	// Overflow compare at 16 seconds
-	OCR1A = 62500;
+	TCCR1B = (1 << CS12) | (1 << CS10);
+	// Overflow compare at 16/4 seconds
+	OCR1A = 62500/4;
 	// Enable timer compare interrupt
-	TIMSK1 |= (1 << OCIE1A);
+	TIMSK1 = 0x00 | (1 << OCIE1A);
 }
 
 void sleep_now()

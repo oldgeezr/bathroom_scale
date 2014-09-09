@@ -16,7 +16,7 @@
 #include "uart.h"
 
 // State
-volatile int asleep = 1;
+volatile int asleep = 0; // 1;
 
 int main (void)
 {
@@ -28,7 +28,7 @@ int main (void)
 	PORTB |= (1 << PINB0); 
 
 	// Select ADC channel
-	uint8_t ch = 0b00000000;
+	// uint8_t ch = 0b00000000;
 
 	while(1)
 	{
@@ -38,22 +38,25 @@ int main (void)
 			// Power down
 			sleep_now();
 			// Power up 
-			external_clock_init();
-			interrupt_init();
-			uart_init();
-			timer_init();
-			adc_init();
-			sei();
+			// external_clock_init();
+			// interrupt_init();
+			// uart_init();
+			// timer_init();
+			// adc_init();
+			// sei();
 		} else {
 			// Temp for debugging
 			PORTB ^= (1 << PINB0);
 			// Read from ADC
-			uint16_t result = adc_read(ch);
-			_delay_ms(100);
+			// uint16_t result = adc_read(ch);
+			_delay_ms(1000);
 			// Send result
-			uart_send_byte((result >> 8));
-			uart_send_byte(result);
-			uart_send_byte('\n');
+			// uart_send_byte((result >> 8));
+			// uart_send_byte(result);
+			// uart_send_byte('\n');
+			
+			external_clock_init();
+			timer_init();
 		}
 	}
 }
