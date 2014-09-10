@@ -29,13 +29,13 @@ void timer_init()
 {
 	TCNT1 = 0x0000;
 	// Set CTC mode
-	TCCR1B = (1 << WGM12);
+	TCCR1B |= (1 << WGM12);
 	// Set clock prescale to 1024
-	TCCR1B = (1 << CS12) | (1 << CS10);
+	TCCR1B |= (1 << CS12) | (1 << CS10);
 	// Overflow compare at 16/4 seconds
 	OCR1A = 62500/4;
 	// Enable timer compare interrupt
-	TIMSK1 = 0x00 | (1 << OCIE1A);
+	TIMSK1 |= 0x00 | (1 << OCIE1A);
 }
 
 void sleep_now()

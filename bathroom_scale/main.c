@@ -46,10 +46,11 @@ int main (void)
 			// sei();
 		} else {
 			// Temp for debugging
+			_delay_ms(1000);
 			PORTB ^= (1 << PINB0);
 			// Read from ADC
 			// uint16_t result = adc_read(ch);
-			_delay_ms(1000);
+			
 			// Send result
 			// uart_send_byte((result >> 8));
 			// uart_send_byte(result);
