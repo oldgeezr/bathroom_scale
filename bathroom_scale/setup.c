@@ -12,7 +12,7 @@ void external_clock_init()
 	// Important writing procedure: Datasheet - 9.11
 	// Interrupt must be disabled!
 	// Enable clock prescale
-	CLKPR = 0x00 | ( 1 << CLKPCE );
+	CLKPR = ( 1 << CLKPCE );
 	// Prescale 4
 	CLKPR = ( 1 << CLKPS1 );
 }
@@ -35,9 +35,9 @@ void timer_init()
 	// Set clock prescale to 1024
 	TCCR1B |= (1 << CS12) | (1 << CS10);
 	// Overflow compare at 16/4 seconds
-	OCR1A = 62500/4;
+	OCR1A = 62500;
 	// Enable timer compare interrupt
-	TIMSK1 |= 0x00 | (1 << OCIE1A);
+	TIMSK1 |= (1 << OCIE1A);
 }
 
 void sleep_now()
