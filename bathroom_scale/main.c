@@ -4,8 +4,8 @@
  * Description:	Digital bathroom scale with UART communication
  *
  * Behavior:	Wake up on interrupt. 
- *				Start sending ADC input to RPi
- *				Power down after 30 sec
+ *		Start sending ADC input to RPi
+ *		Power down after 30 sec
  *
  * Created: 09.09.2014 20:22:48
  *  Author: Christoffer
