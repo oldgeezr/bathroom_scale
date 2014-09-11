@@ -21,7 +21,6 @@ volatile int asleep = 0; // 1;
 int main (void)
 {
 	interrupt_init();
-	sei();
 	
 	// temp for debugging
 	DDRB |= (1 << PINB0);
@@ -58,6 +57,8 @@ int main (void)
 			
 			external_clock_init();
 			timer_init();
+			
+			sei();
 		}
 	}
 }
@@ -66,6 +67,7 @@ ISR(TIMER1_COMPA_vect)
 {
 	// Power down
 	asleep = 1;
+	cli();
 }
 
 ISR(INT0_vect)
