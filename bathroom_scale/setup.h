@@ -8,9 +8,6 @@
 #ifndef SETUP_H_
 #define SETUP_H_
 
-#define F_CPU 4000000UL
-
-#include <util/delay.h>
 #include <avr/sleep.h>
 #include <avr/interrupt.h>
 
