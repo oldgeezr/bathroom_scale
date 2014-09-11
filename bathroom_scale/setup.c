@@ -9,10 +9,13 @@
 
 void external_clock_init()
 {
+	// Important writing procedure: Datasheet - 9.11
+	// Disable interrupt
+	cli();
 	// Enable clock prescale
-	CLKPR = 0x00 | ( 1 << CLKPCE ); // Very sensitive to writing
+	CLKPR = 0x00 | ( 1 << CLKPCE );
 	// Prescale 4
-	CLKPR = ( 1 << CLKPS1 ); // Very sensitive to writing
+	CLKPR = ( 1 << CLKPS1 );
 }
 
 void interrupt_init()
@@ -23,6 +26,8 @@ void interrupt_init()
 	EICRA |= (1 << ISC00) | (1 << ISC01);
 	// Enable INT0
 	EIMSK |= (1 << INT0);
+	// Enable interrupt
+	sei();
 }
 
 void timer_init()
