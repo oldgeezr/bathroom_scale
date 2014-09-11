@@ -1,4 +1,4 @@
-uart_rpi_chip
+Digital bathroom scale w/ UART communication
 =============
 
 Hooking my bathroom scale to a Raspberry Pi for logging weight. The logged
