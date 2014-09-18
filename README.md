@@ -1,6 +1,8 @@
 Digital bathroom scale w/ UART communication
 =============
 
+Project goals: Chip to computer communication
+
 Hooking my bathroom scale to a Raspberry Pi for logging weight. The logged
 data is linked to an ID from an RFID reader and sent to a server/database.
 
